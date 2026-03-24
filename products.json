@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop",
+    "price": 50000,
+    "category": "electronics",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8"
+  },
+  {
+    "id": 2,
+    "name": "T-Shirt",
+    "price": 1000,
+    "category": "fashion",
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"
+  },
+  {
+    "id": 3,
+    "name": "Book",
+    "price": 500,
+    "category": "books",
+    "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794"
+  }
+]
