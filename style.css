@@ -1,84 +1,142 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 20px;
+/* 🌐 Import Modern Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-   background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
     min-height: 100vh;
     color: #333;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+/* 🧭 Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 15px 15px;
 }
 
+.navbar h2 {
+    font-weight: 600;
+}
+
+.navbar input {
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    width: 220px;
+}
+
+/* 🎯 Filters */
 .filters {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .filters button {
-    padding: 10px 18px;
+    padding: 10px 20px;
     margin: 5px;
     border: none;
-    background: #e0e0e0;
-    border-radius: 20px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(5px);
     cursor: pointer;
     transition: 0.3s;
+    font-weight: 500;
 }
 
 .filters button:hover {
-    background: #333;
+    background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
 }
 
-.product-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 20px;
+/* 🎛 Controls (Dropdowns) */
+.controls {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
+.controls select {
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+    font-family: 'Poppins';
+}
+
+/* 🧱 Product Grid */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    padding: 30px;
+}
+
+/* 💎 Cards */
 .card {
-   background: linear-gradient(135deg, #667eea, #764ba2);
-color: white;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
     padding: 15px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
     transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px) scale(1.03);
 }
 
+/* 🖼 Image Fix (IMPORTANT FIX) */
 .card img {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
+    height: 180px;
+    object-fit: contain; /* keeps image proper */
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
 }
 
+/* 📝 Text */
 .card h3 {
-    margin: 10px 0;
+    font-size: 15px;
+    font-weight: 500;
+    min-height: 40px; /* equal height titles */
 }
 
 .card p {
-    font-weight: bold;
-    color: #2c3e50;
+    margin: 5px 0;
+    font-weight: 500;
 }
 
+/* ⭐ Rating */
+.card p:nth-child(4) {
+    color: #f39c12;
+}
+
+/* 🛒 Button */
 .card button {
-    background: #007bff;
+    margin-top: auto;
+    background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
+    padding: 10px;
+    border-radius: 25px;
     cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
 }
 
 .card button:hover {
-    background: #0056b3;
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
