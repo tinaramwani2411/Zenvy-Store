@@ -140,3 +140,69 @@ body {
     transform: scale(1.08);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
+
+/* 📱 MOBILE DEVICES (up to 600px) */
+@media (max-width: 600px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .navbar input {
+        width: 100%;
+    }
+
+    .filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .filters button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controls select {
+        width: 90%;
+    }
+
+    .product-container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .card img {
+        height: 160px;
+    }
+}
+
+
+/* 📲 TABLET DEVICES (600px - 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .navbar input {
+        width: 180px;
+    }
+}
+
+
+/* 💻 SMALL LAPTOPS (900px - 1200px) */
+@media (min-width: 901px) and (max-width: 1200px) {
+
+    .product-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
