@@ -2,25 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Online Store</title>
+    <title>Zenvy Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="navbar">
+
+<!-- Navbar -->
+<div class="navbar">
     <h2>Zenvy Store 🛍️</h2>
     <input type="text" placeholder="Search products..." id="searchBox" onkeyup="searchProducts()">
-    </div>
+</div>
 
-    <!-- Category Filter -->
-    <div class="filters">
-        <button onclick="filterCategory('all')">All</button>
-        <button onclick="filterCategory('electronics')">Electronics</button>
-        <button onclick="filterCategory('clothing')">Fashion</button>
-        <button onclick="filterCategory('jewelery')">Jewelry</button>
-    </div>
-    <div class="controls">
+<!-- Top Icons -->
+<div class="top-icons">
+    <span>❤️ <span id="favCount">0</span></span>
+    <span>🛒 <span id="cartCount">0</span></span>
+</div>
 
-    <!-- Price Filter -->
+<!-- Filters -->
+<div class="filters">
+    <button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('electronics')">Electronics</button>
+    <button onclick="filterCategory('clothing')">Fashion</button>
+    <button onclick="filterCategory('jewelery')">Jewelry</button>
+</div>
+
+<!-- Controls -->
+<div class="controls">
     <select onchange="filterPrice(this.value)">
         <option value="all">All Prices</option>
         <option value="1000">Below ₹1000</option>
@@ -28,24 +36,25 @@
         <option value="50000">Below ₹50000</option>
     </select>
 
-    <!-- Sort -->
     <select onchange="sortProducts(this.value)">
         <option value="">Sort By</option>
         <option value="low">Price Low → High</option>
         <option value="high">Price High → Low</option>
     </select>
 
-    <!-- Rating Filter -->
     <select onchange="filterRating(this.value)">
         <option value="all">All Ratings</option>
         <option value="4">4⭐ & above</option>
         <option value="3">3⭐ & above</option>
     </select>
-
 </div>
-    <!-- Product Container -->
-    <div id="products" class="product-container"></div>
 
-    <script src="script.js"></script>
+<!-- Products -->
+<div id="products" class="product-container"></div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script src="script.js"></script>
 </body>
 </html>

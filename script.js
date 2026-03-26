@@ -1,115 +1,103 @@
 let allProducts = [];
 let filteredProducts = [];
 
-// 🔄 Fetch products from API
+// Fetch API
 fetch('https://fakestoreapi.com/products')
-  .then(res => res.json())
-  .then(data => {
+.then(res => res.json())
+.then(data => {
     allProducts = data;
     filteredProducts = data;
     displayProducts(data);
-  })
-  .catch(error => {
-    console.error("Error fetching data:", error);
-  });
+    updateCounts();
+});
 
-  //seaerch products
-function searchProducts() {
-    let value = document.getElementById("searchBox").value.toLowerCase();
-
-    let result = allProducts.filter(p =>
-        p.title.toLowerCase().includes(value)
-    );
-
-    displayProducts(result);
-}
-
-// 🖼️ Display Products
+// Display
 function displayProducts(products) {
-    const container = document.getElementById("products");
+    let container = document.getElementById("products");
     container.innerHTML = "";
 
     products.forEach(product => {
         container.innerHTML += `
-            <div class="card">
-                <img src="${product.image}" />
-                <h3>${product.title}</h3>
-                <p>₹${Math.round(product.price * 80)}</p>
-                <p>⭐ ${product.rating?.rate || 4}</p>
-                <button onclick="addToCart(${product.id})">🛒 Add to Cart</button>
-            </div>
+        <div class="card">
+            <button class="fav-btn" onclick="addToFav(${product.id})">❤️</button>
+            <img src="${product.image}">
+            <h3>${product.title.substring(0,40)}...</h3>
+            <p>₹${Math.round(product.price*80)}</p>
+            <p>⭐ ${product.rating.rate}</p>
+            <button onclick="addToCart(${product.id})">🛒 Add to Cart</button>
+        </div>
         `;
     });
 }
 
+// Search
+function searchProducts() {
+    let val = document.getElementById("searchBox").value.toLowerCase();
+    let res = allProducts.filter(p => p.title.toLowerCase().includes(val));
+    displayProducts(res);
+}
 
-// 🗂️ Category Filter
-function filterCategory(category) {
-    if (category === "all") {
-        filteredProducts = allProducts;
-    } else {
-        filteredProducts = allProducts.filter(p =>
-            p.category.toLowerCase().includes(category.toLowerCase())
-        );
-    }
+// Category
+function filterCategory(cat) {
+    if(cat==="all") filteredProducts=allProducts;
+    else filteredProducts=allProducts.filter(p=>p.category.includes(cat));
     displayProducts(filteredProducts);
 }
 
-
-// 💰 Price Filter
-function filterPrice(value) {
-    if (value === "all") {
-        displayProducts(filteredProducts);
-        return;
-    }
-
-    let price = parseInt(value);
-    let result = filteredProducts.filter(p =>
-        (p.price * 80) <= price
-    );
-
-    displayProducts(result);
+// Price
+function filterPrice(val){
+    if(val==="all") return displayProducts(filteredProducts);
+    let res=filteredProducts.filter(p=>p.price*80<=val);
+    displayProducts(res);
 }
 
-
-// ⭐ Rating Filter
-function filterRating(value) {
-    if (value === "all") {
-        displayProducts(filteredProducts);
-        return;
-    }
-
-    let rating = parseFloat(value);
-    let result = filteredProducts.filter(p =>
-        (p.rating?.rate || 4) >= rating
-    );
-
-    displayProducts(result);
+// Rating
+function filterRating(val){
+    if(val==="all") return displayProducts(filteredProducts);
+    let res=filteredProducts.filter(p=>p.rating.rate>=val);
+    displayProducts(res);
 }
 
-
-// 🔄 Sorting
-function sortProducts(type) {
-    let sorted = [...filteredProducts];
-
-    if (type === "low") {
-        sorted.sort((a, b) => a.price - b.price);
-    } else if (type === "high") {
-        sorted.sort((a, b) => b.price - a.price);
-    }
-
+// Sort
+function sortProducts(type){
+    let sorted=[...filteredProducts];
+    if(type==="low") sorted.sort((a,b)=>a.price-b.price);
+    if(type==="high") sorted.sort((a,b)=>b.price-a.price);
     displayProducts(sorted);
 }
 
-
-// 🛒 Add to Cart (localStorage)
-function addToCart(id) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    let product = allProducts.find(p => p.id === id);
+// Cart
+function addToCart(id){
+    let cart=JSON.parse(localStorage.getItem("cart"))||[];
+    let product=allProducts.find(p=>p.id===id);
     cart.push(product);
+    localStorage.setItem("cart",JSON.stringify(cart));
+    showToast("Added to cart 🛒");
+    updateCounts();
+}
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+// Fav
+function addToFav(id){
+    let fav=JSON.parse(localStorage.getItem("fav"))||[];
+    let product=allProducts.find(p=>p.id===id);
+    fav.push(product);
+    localStorage.setItem("fav",JSON.stringify(fav));
+    showToast("Added to wishlist ❤️");
+    updateCounts();
+}
 
-    alert(product.title + " added to cart!");
+// Counts
+function updateCounts(){
+    document.getElementById("cartCount").innerText =
+        (JSON.parse(localStorage.getItem("cart"))||[]).length;
+    document.getElementById("favCount").innerText =
+        (JSON.parse(localStorage.getItem("fav"))||[]).length;
+}
+
+// Toast
+function showToast(msg){
+    let t=document.getElementById("toast");
+    t.innerText=msg;
+    t.classList.add("show");
+    setTimeout(()=>t.classList.remove("show"),2000);
 }

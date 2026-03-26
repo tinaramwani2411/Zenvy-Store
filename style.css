@@ -1,208 +1,134 @@
-/* 🌐 Import Modern Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
-    min-height: 100vh;
-    color: #333;
 }
 
-/* 🧭 Navbar */
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 15px 30px;
     background: rgba(255,255,255,0.6);
     backdrop-filter: blur(10px);
-    border-radius: 0 0 15px 15px;
-}
-
-.navbar h2 {
-    font-weight: 600;
 }
 
 .navbar input {
-    padding: 10px 15px;
-    border-radius: 25px;
+    padding: 10px;
+    border-radius: 20px;
     border: none;
-    outline: none;
-    width: 220px;
 }
 
-/* 🎯 Filters */
+/* Top icons */
+.top-icons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 10px 30px;
+    font-weight: 600;
+}
+
+/* Filters */
 .filters {
     text-align: center;
-    margin: 20px 0;
+    margin: 20px;
 }
 
 .filters button {
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    border-radius: 25px;
-    background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(5px);
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: 500;
-}
-
-.filters button:hover {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-}
-
-/* 🎛 Controls (Dropdowns) */
-.controls {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.controls select {
     padding: 10px 15px;
     margin: 5px;
     border-radius: 20px;
     border: none;
-    background: rgba(255,255,255,0.7);
+    background: white;
     cursor: pointer;
-    font-family: 'Poppins';
 }
 
-/* 🧱 Product Grid */
+.filters button:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* Controls */
+.controls {
+    text-align: center;
+}
+
+.controls select {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+}
+
+/* Grid */
 .product-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-    padding: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-/* 💎 Cards */
+/* Card */
 .card {
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(10px);
     padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    transition: 0.3s;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
 }
 
-.card:hover {
-    transform: translateY(-10px) scale(1.03);
-}
-
-/* 🖼 Image Fix (IMPORTANT FIX) */
 .card img {
-    width: 100%;
     height: 180px;
-    object-fit: contain; /* keeps image proper */
-    background: white;
-    border-radius: 12px;
-    padding: 10px;
+    object-fit: contain;
+    width: 100%;
 }
 
-/* 📝 Text */
-.card h3 {
-    font-size: 15px;
-    font-weight: 500;
-    min-height: 40px; /* equal height titles */
+/* Fav button */
+.fav-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
 }
 
-.card p {
-    margin: 5px 0;
-    font-weight: 500;
-}
-
-/* ⭐ Rating */
-.card p:nth-child(4) {
-    color: #f39c12;
-}
-
-/* 🛒 Button */
+/* Button */
 .card button {
-    margin-top: auto;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     border: none;
     padding: 10px;
-    border-radius: 25px;
+    border-radius: 20px;
     cursor: pointer;
-    font-weight: 500;
-    transition: 0.3s;
 }
 
-.card button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+/* Toast */
+#toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: black;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0;
 }
 
-/* 📱 MOBILE DEVICES (up to 600px) */
-@media (max-width: 600px) {
+#toast.show {
+    opacity: 1;
+}
 
+/* Mobile */
+@media(max-width:600px){
     .navbar {
         flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-
-    .navbar input {
-        width: 100%;
-    }
-
-    .filters {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .filters button {
-        padding: 8px 12px;
-        font-size: 12px;
-    }
-
-    .controls {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .controls select {
-        width: 90%;
     }
 
     .product-container {
         grid-template-columns: 1fr;
-        padding: 15px;
-    }
-
-    .card img {
-        height: 160px;
-    }
-}
-
-
-/* 📲 TABLET DEVICES (600px - 900px) */
-@media (min-width: 601px) and (max-width: 900px) {
-
-    .product-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .navbar input {
-        width: 180px;
-    }
-}
-
-
-/* 💻 SMALL LAPTOPS (900px - 1200px) */
-@media (min-width: 901px) and (max-width: 1200px) {
-
-    .product-container {
-        grid-template-columns: repeat(3, 1fr);
     }
 }
