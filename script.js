@@ -101,3 +101,20 @@ function showToast(msg){
     t.classList.add("show");
     setTimeout(()=>t.classList.remove("show"),2000);
 }
+
+function toggleDark() {
+    document.body.classList.toggle("dark");
+}
+function showDetails(product) {
+    let popup = document.getElementById("popup");
+
+    popup.innerHTML = `
+        <h2>${product.title}</h2>
+        <img src="${product.image}" width="200">
+        <p>${product.description}</p>
+        <button onclick="popup.style.display='none'">Close</button>
+    `;
+
+    popup.style.display = "block";
+}
+onclick="showDetails(${JSON.stringify(product)})"

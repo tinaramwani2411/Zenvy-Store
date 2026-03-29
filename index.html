@@ -16,7 +16,8 @@
 <!-- Top Icons -->
 <div class="top-icons">
     <span>❤️ <span id="favCount">0</span></span>
-    <span>🛒 <span id="cartCount">0</span></span>
+    <div class="cart-float">🛒</div>
+    <button onclick="toggleDark()">🌙</button>
 </div>
 
 <!-- Filters -->
@@ -27,6 +28,7 @@
     <button onclick="filterCategory('jewelery')">Jewelry</button>
 </div>
 
+<div id="popup" class="popup"></div>
 <!-- Controls -->
 <div class="controls">
     <select onchange="filterPrice(this.value)">
@@ -50,7 +52,12 @@
 </div>
 
 <!-- Products -->
-<div id="products" class="product-container"></div>
+<div id="products" class="product-container">
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+</div>
+
 
 <!-- Toast -->
 <div id="toast"></div>
