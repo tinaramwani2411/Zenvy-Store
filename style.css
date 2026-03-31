@@ -1,27 +1,54 @@
+/* 🌐 Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
-    margin: 0;
     background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+    min-height: 100vh;
+    color: #333;
 }
 
-/* Navbar */
+/* 🌙 Dark Mode */
+.dark {
+    background: #121212;
+    color: white;
+}
+
+/* 🧭 Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 15px 30px;
     background: rgba(255,255,255,0.6);
     backdrop-filter: blur(10px);
 }
 
-.navbar input {
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
+.navbar h2 {
+    font-weight: 600;
 }
 
-/* Top icons */
+.navbar input {
+    padding: 12px 15px;
+    border-radius: 25px;
+    border: none;
+    width: 250px;
+}
+
+.navbar input:focus {
+    width: 300px;
+    outline: none;
+}
+
+/* 🔝 Top Icons */
 .top-icons {
     display: flex;
     justify-content: flex-end;
@@ -30,11 +57,145 @@ body {
     font-weight: 600;
 }
 
-.dark {
-    background: #121212;
-    color: white;
+/* 🎯 Filters */
+.filters {
+    text-align: center;
+    margin: 20px;
 }
 
+.filters button {
+    padding: 10px 18px;
+    margin: 5px;
+    border-radius: 25px;
+    border: none;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.filters button:hover {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* 🎛 Controls */
+.controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.controls select {
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255,255,255,0.7);
+}
+
+/* 🧱 Grid */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    padding: 25px;
+}
+
+/* 💎 Card */
+.card {
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.5s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* 🖼 Image */
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* 📝 Text */
+.card h3 {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 10px 0;
+    min-height: 40px;
+}
+
+.card p {
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+/* ⭐ Rating */
+.card p:nth-child(4) {
+    color: #f39c12;
+}
+
+/* ❤️ Favorite Button */
+.fav-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    border-radius: 50%;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.fav-btn:hover {
+    background: red;
+    color: white;
+    transform: scale(1.2);
+}
+
+/* 🛒 Button */
+.card button {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* 🔔 Toast */
+#toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: black;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+#toast.show {
+    opacity: 1;
+}
+
+/* 🛒 Floating Cart */
 .cart-float {
     position: fixed;
     bottom: 20px;
@@ -44,72 +205,10 @@ body {
     padding: 15px;
     border-radius: 50%;
     font-size: 20px;
-}
-/* Filters */
-.filters {
-    text-align: center;
-    margin: 20px;
-}
-
-.filters button {
-    padding: 10px 15px;
-    margin: 5px;
-    border-radius: 20px;
-    border: none;
-    background: white;
     cursor: pointer;
 }
 
-.filters button:hover {
-    background: #667eea;
-    color: white;
-}
-
-/* Controls */
-.controls {
-    text-align: center;
-}
-
-.controls select {
-    padding: 10px;
-    margin: 5px;
-    border-radius: 20px;
-}
-
-/* Grid */
-.product-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-/* Card */
-.card {
-    background: rgba(255,255,255,0.4);
-    backdrop-filter: blur(10px);
-    padding: 15px;
-    border-radius: 20px;
-    text-align: center;
-    position: relative;
-    animation: fadeIn 0.5s ease;
-}
-
-.card img {
-    height: 180px;
-    object-fit: contain;
-    width: 100%;
-}
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* ✨ Popup */
 .popup {
     position: fixed;
     top: 50%;
@@ -122,53 +221,7 @@ body {
     z-index: 1000;
 }
 
-/* Fav button */
-.fav-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    background: none;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-/* Button */
-.card button {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-/* Toast */
-#toast {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: black;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    opacity: 0;
-}
-
-#toast.show {
-    opacity: 1;
-}
-
-/* Mobile */
-@media(max-width:600px){
-    .navbar {
-        flex-direction: column;
-    }
-
-    .product-container {
-        grid-template-columns: 1fr;
-    }
-}
+/* 💀 Skeleton */
 .skeleton {
     height: 250px;
     border-radius: 20px;
@@ -179,4 +232,67 @@ body {
 @keyframes shimmer {
     0% { background-position: -200px 0; }
     100% { background-position: 200px 0; }
+}
+
+/* 🎬 Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 📱 MOBILE */
+@media(max-width:600px){
+
+    body {
+        font-size: 16px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .navbar input {
+        width: 100%;
+    }
+
+    .top-icons {
+        justify-content: center;
+    }
+
+    .filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controls select {
+        width: 90%;
+    }
+
+    .product-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .card img {
+        height: 140px;
+    }
+
+    .card h3 {
+        font-size: 14px;
+    }
 }
