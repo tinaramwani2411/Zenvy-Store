@@ -1,0 +1,26 @@
+{
+  "name": "zenvy-store",
+  "version": "1.0.0",
+  "description": "Zenvy Store is a modern and responsive online store homepage built using HTML, CSS, and JavaScript. It showcases products in different categories with interactive filtering and a clean UI design.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinaramwani2411/Zenvy-Store.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tinaramwani2411/Zenvy-Store/issues"
+  },
+  "homepage": "https://github.com/tinaramwani2411/Zenvy-Store#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1"
+  }
+}
