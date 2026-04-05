@@ -17,19 +17,21 @@
 <!-- Top Icons -->
 <div class="top-icons">
     <span>❤️ <span id="favCount">0</span></span>
-    <div class="cart-float">🛒</div>
+    <span>🛒 <span id="cartCount">0</span></span>
     <button onclick="toggleDark()">🌙</button>
 </div>
 
-<!-- Filters -->
+<!-- ✅ FIXED FILTERS -->
 <div class="filters">
     <button onclick="filterCategory('all')">All</button>
-    <button onclick="filterCategory('electronics')">Electronics</button>
-    <button onclick="filterCategory('clothing')">Fashion</button>
-    <button onclick="filterCategory('jewelery')">Jewelry</button>
+    <button onclick="filterCategory('beauty')">Beauty</button>
+    <button onclick="filterCategory('fragrances')">Perfume</button>
+    <button onclick="filterCategory('furniture')">Furniture</button>
+    <button onclick="filterCategory('groceries')">Grocery</button>
 </div>
 
 <div id="popup" class="popup"></div>
+
 <!-- Controls -->
 <div class="controls">
     <select onchange="filterPrice(this.value)">
@@ -53,12 +55,7 @@
 </div>
 
 <!-- Products -->
-<div id="products" class="product-container">
-    <div class="skeleton"></div>
-    <div class="skeleton"></div>
-    <div class="skeleton"></div>
-</div>
-
+<div id="products" class="product-container"></div>
 
 <!-- Toast -->
 <div id="toast"></div>
