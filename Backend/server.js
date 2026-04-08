@@ -17,7 +17,9 @@ const productRoutes = require('./routes/productRoutes');
 mongoose.connect('mongodb://127.0.0.1:27017/zenvy-store')
 .then(() => console.log("✅ MongoDB Connected"))
 .catch(err => console.log("DB Error:", err));
+const orderRoutes = require('./routes/orderRoutes');
 
+app.use('/api/orders', orderRoutes);
 // 🧪 Test route
 app.get('/', (req, res) => {
     res.send("Backend is Running 🚀");

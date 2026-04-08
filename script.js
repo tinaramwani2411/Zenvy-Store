@@ -143,3 +143,31 @@ function showDetailsById(id) {
 
     popup.style.display = "block";
 }
+function placeOrder() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+        alert("Cart empty ❌");
+        return;
+    }
+
+    let total = cart.reduce((sum, p) => sum + (p.price * 80), 0);
+
+    fetch('http://localhost:5000/api/orders/place', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            products: cart,
+            totalAmount: total
+        })
+    })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        localStorage.removeItem("cart");
+        updateCounts();
+    })
+    .catch(err => console.log(err));
+}
