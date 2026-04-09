@@ -17,11 +17,16 @@
 <!-- Top Icons -->
 <div class="top-icons">
     <span>❤️ <span id="favCount">0</span></span>
-    <span>🛒 <span id="cartCount">0</span></span>
+
+    <!-- ✅ CLICKABLE CART -->
+    <span onclick="scrollToCart()" style="cursor:pointer;">
+        🛒 <span id="cartCount">0</span>
+    </span>
+
     <button onclick="toggleDark()">🌙</button>
 </div>
 
-<!-- ✅ FIXED FILTERS -->
+<!-- Filters -->
 <div class="filters">
     <button onclick="filterCategory('all')">All</button>
     <button onclick="filterCategory('beauty')">Beauty</button>
@@ -55,12 +60,22 @@
 </div>
 
 <!-- Products -->
-<div id="products" class="product-container">
+<div id="products" class="product-container"></div>
+
+<!-- 🛒 CART SECTION -->
+<h2 class="cart-title">🛒 Your Cart</h2>
+<div id="cartItems" class="cart-container"></div>
+
+<!-- ORDER BUTTON -->
+<div class="order-box">
     <button onclick="placeOrder()">✅ Place Order</button>
 </div>
 
 <!-- Toast -->
 <div id="toast"></div>
+
+<!-- FLOATING CART -->
+<div class="cart-float" onclick="scrollToCart()">🛒</div>
 
 <script src="script.js"></script>
 </body>
