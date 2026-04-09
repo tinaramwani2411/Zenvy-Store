@@ -18,9 +18,13 @@
 <div class="top-icons">
     <span>❤️ <span id="favCount">0</span></span>
 
-    <!-- ✅ CLICKABLE CART -->
     <span onclick="scrollToCart()" style="cursor:pointer;">
         🛒 <span id="cartCount">0</span>
+    </span>
+
+    <!-- ✅ ORDER BUTTON -->
+    <span onclick="getOrders()" style="cursor:pointer;">
+        📦 Orders
     </span>
 
     <button onclick="toggleDark()">🌙</button>
@@ -35,6 +39,7 @@
     <button onclick="filterCategory('groceries')">Grocery</button>
 </div>
 
+<!-- Popup -->
 <div id="popup" class="popup"></div>
 
 <!-- Controls -->
@@ -48,8 +53,8 @@
 
     <select onchange="sortProducts(this.value)">
         <option value="">Sort By</option>
-        <option value="low">Price Low → High</option>
-        <option value="high">Price High → Low</option>
+        <option value="low">Low → High</option>
+        <option value="high">High → Low</option>
     </select>
 
     <select onchange="filterRating(this.value)">
@@ -62,13 +67,24 @@
 <!-- Products -->
 <div id="products" class="product-container"></div>
 
-<!-- 🛒 CART SECTION -->
+<!-- CART -->
 <h2 class="cart-title">🛒 Your Cart</h2>
 <div id="cartItems" class="cart-container"></div>
 
 <!-- ORDER BUTTON -->
 <div class="order-box">
     <button onclick="placeOrder()">✅ Place Order</button>
+</div>
+
+<!-- ✅ ORDER HISTORY -->
+<h2 class="cart-title">📦 Your Orders</h2>
+<div id="ordersList" class="cart-container"></div>
+
+<!-- ORDER POPUP -->
+<div id="orderPopup" class="popup">
+    <h2>🎉 Order Placed Successfully!</h2>
+    <div id="orderDetails"></div>
+    <button onclick="closeOrderPopup()">OK</button>
 </div>
 
 <!-- Toast -->
