@@ -120,9 +120,10 @@ function removeFromCart(i) {
 function placeOrder() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    console.log("Cart sending:", cart); // 🔥 DEBUG
-
-    if (!cart.length) return alert("Cart empty ❌");
+    if (!cart.length) {
+        showToast("Cart empty ❌");
+        return;
+    }
 
     let total = cart.reduce((sum, p) => sum + (p.price * 80), 0);
 
@@ -130,21 +131,47 @@ function placeOrder() {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
-            items: cart,   // ✅ correct
+            items: cart,
             totalAmount: total
         })
     })
     .then(res => res.text())
     .then(() => {
-        alert("Order Placed ✅");
 
+        // 🔥 PRODUCT LIST (better UI)
+        let itemsHTML = cart.map(p => `
+            <li style="margin:5px 0;">🛍 ${p.title} - ₹${(p.price * 80).toFixed(0)}</li>
+        `).join("");
+
+        // 🔥 FINAL POPUP DESIGN
+        let details = `
+            <h3 style="color:green;">✅ Order Confirmed!</h3>
+            <p><b>Total Amount:</b> ₹${total.toFixed(2)}</p>
+            <p><b>Products:</b></p>
+            <ul style="text-align:left; padding-left:20px;">
+                ${itemsHTML}
+            </ul>
+        `;
+
+        document.getElementById("orderDetails").innerHTML = details;
+
+        // 🔥 SHOW POPUP WITH ANIMATION
+        let popup = document.getElementById("orderPopup");
+        popup.style.display = "block";
+        popup.style.animation = "fadeIn 0.3s ease";
+
+        // 🔥 CLEAR CART
         localStorage.removeItem("cart");
         displayCart();
         updateCounts();
-    })
-    .catch(err => console.log(err));
-}
 
+        showToast("Order placed successfully 🎉");
+    })
+    .catch(err => {
+        console.log(err);
+        showToast("Order failed ❌");
+    });
+}
 // UTILS
 function updateCounts() {
     document.getElementById("cartCount").innerText =

@@ -2,30 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Zenvy Store</title>
+    <title>Zenvy Store 🛍️</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- 🔷 NAVBAR -->
 <div class="navbar">
     <h2>Zenvy Store 🛍️</h2>
     <input type="text" placeholder="Search products..." id="searchBox" onkeyup="searchProducts()">
 </div>
 
-<!-- Top Icons -->
+<!-- 🔷 TOP ICONS -->
 <div class="top-icons">
-    <span>❤️ <span id="favCount">0</span></span>
+    <span title="Wishlist">❤️ <span id="favCount">0</span></span>
 
-    <span onclick="scrollToCart()" style="cursor:pointer;">
+    <span onclick="scrollToCart()" style="cursor:pointer;" title="Cart">
         🛒 <span id="cartCount">0</span>
     </span>
 
-    <button onclick="toggleDark()">🌙</button>
+    <button onclick="toggleDark()" title="Dark Mode">🌙</button>
 </div>
 
-<!-- Filters -->
+<!-- 🔷 FILTERS -->
 <div class="filters">
     <button onclick="filterCategory('all')">All</button>
     <button onclick="filterCategory('beauty')">Beauty</button>
@@ -34,10 +34,7 @@
     <button onclick="filterCategory('groceries')">Grocery</button>
 </div>
 
-<!-- Popup -->
-<div id="popup" class="popup"></div>
-
-<!-- Controls -->
+<!-- 🔷 CONTROLS -->
 <div class="controls">
     <select onchange="filterPrice(this.value)">
         <option value="all">All Prices</option>
@@ -59,32 +56,32 @@
     </select>
 </div>
 
-<!-- Products -->
+<!-- 🔷 PRODUCT DETAILS POPUP -->
+<div id="popup" class="popup"></div>
+
+<!-- 🔷 PRODUCTS -->
 <div id="products" class="product-container"></div>
 
-<!-- CART -->
+<!-- 🔷 CART -->
 <h2 class="cart-title">🛒 Your Cart</h2>
 <div id="cartItems" class="cart-container"></div>
 
-<!-- ORDER BUTTON -->
+<!-- 🔷 ORDER BUTTON -->
 <div class="order-box">
-    <button onclick="placeOrder()">✅ Place Order</button>
+    <button class="order-btn" onclick="placeOrder()">✅ Place Order</button>
 </div>
 
-<!-- ✅ ORDER HISTORY -->
-
-
-<!-- ORDER POPUP -->
-<div id="orderPopup" class="popup">
+<!-- 🔥 ORDER SUCCESS POPUP -->
+<div id="orderPopup" class="popup order-popup">
     <h2>🎉 Order Placed Successfully!</h2>
     <div id="orderDetails"></div>
     <button onclick="closeOrderPopup()">OK</button>
 </div>
 
-<!-- Toast -->
+<!-- 🔷 TOAST -->
 <div id="toast"></div>
 
-<!-- FLOATING CART -->
+<!-- 🔷 FLOATING CART -->
 <div class="cart-float" onclick="scrollToCart()">🛒</div>
 
 <script src="script.js"></script>

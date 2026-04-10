@@ -213,6 +213,25 @@ body {
     margin-top: 10px;
 }
 
+/* 📦 ORDER BUTTON */
+.order-box {
+    text-align: center;
+    margin: 20px;
+}
+
+.order-box button {
+    padding: 14px 25px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #00c853, #64dd17);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.order-box button:hover {
+    transform: scale(1.05);
+}
 
 /* 🔔 TOAST */
 #toast {
@@ -232,6 +251,7 @@ body {
 
 /* ✨ POPUP */
 .popup {
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -239,8 +259,14 @@ body {
     background: white;
     padding: 20px;
     border-radius: 15px;
-    display: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     z-index: 1000;
+    text-align: center;
+    width: 300px;
+}
+
+.popup img {
+    width: 80px;
 }
 
 /* 🎬 ANIMATION */
@@ -328,4 +354,16 @@ body {
     padding: 15px;
     text-align: center;
     border-top: 1px solid #ccc;
+}
+.order-btn {
+    background: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.order-btn:hover {
+    background: darkgreen;
 }
