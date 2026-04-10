@@ -16,7 +16,7 @@ router.post('/place', async (req, res) => {
 // ✅ Get Orders
 router.get('/', async (req, res) => {
     const orders = await Order.find();
-    res.json(orders);
+    res.json(orders);   // ✅ ONLY THIS
 });
 
 module.exports = router;

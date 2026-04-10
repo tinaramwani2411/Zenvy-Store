@@ -213,25 +213,6 @@ body {
     margin-top: 10px;
 }
 
-/* 📦 ORDER BUTTON */
-.order-box {
-    text-align: center;
-    margin: 20px;
-}
-
-.order-box button {
-    padding: 14px 25px;
-    font-size: 16px;
-    background: linear-gradient(135deg, #00c853, #64dd17);
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-.order-box button:hover {
-    transform: scale(1.05);
-}
 
 /* 🔔 TOAST */
 #toast {

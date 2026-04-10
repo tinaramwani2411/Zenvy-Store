@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-    products: Array,
+    items: Array,   // ✅ CHANGE HERE
     totalAmount: Number,
     date: { type: Date, default: Date.now }
 });

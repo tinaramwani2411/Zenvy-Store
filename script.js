@@ -120,6 +120,8 @@ function removeFromCart(i) {
 function placeOrder() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+    console.log("Cart sending:", cart); // 🔥 DEBUG
+
     if (!cart.length) return alert("Cart empty ❌");
 
     let total = cart.reduce((sum, p) => sum + (p.price * 80), 0);
@@ -127,55 +129,20 @@ function placeOrder() {
     fetch('http://localhost:5000/api/orders/place', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ items: cart, totalAmount: total })
+        body: JSON.stringify({
+            items: cart,   // ✅ correct
+            totalAmount: total
+        })
     })
     .then(res => res.text())
     .then(() => {
-
-        let html = cart.map(p =>
-            `<p>🛍️ ${p.title} - ₹${p.price * 80}</p>`
-        ).join("");
-
-        html += `<hr><h3>Total: ₹${total}</h3>`;
-
-        document.getElementById("orderDetails").innerHTML = html;
-        document.getElementById("orderPopup").style.display = "block";
+        alert("Order Placed ✅");
 
         localStorage.removeItem("cart");
         displayCart();
         updateCounts();
-    });
-}
-
-// 🔥 ORDER HISTORY
-function getOrders() {
-     console.log("Orders button clicked ✅");
-    fetch('http://localhost:5000/api/orders')
-    .then(res => res.json())
-    .then(data => {
-    console.log("Orders data:", data);
-
-        let html = "";
-
-        if (!data.length) {
-            html = "<p>No orders yet 😢</p>";
-        } else {
-            data.forEach(order => {
-                html += `
-                <div class="cart-item">
-                    <h4>Order</h4>
-                    <p>Total: ₹${order.totalAmount}</p>
-                    <p>Items: ${order.items.length}</p>
-                </div>`;
-            });
-        }
-
-        document.getElementById("ordersList").innerHTML = html;
-
-        document.getElementById("ordersList").scrollIntoView({
-            behavior: "smooth"
-        });
-    });
+    })
+    .catch(err => console.log(err));
 }
 
 // UTILS
